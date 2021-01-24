@@ -13,6 +13,7 @@ The program uses a MinMax algorithm, which find the code that will reduce the nu
 
 Here is the table produced by the program for playing (4 of 6, with repeats)
 
+```
 1122
         B3W0 1223
                 B3W0 1123
@@ -1391,3 +1392,4 @@ Here is the table produced by the program for playing (4 of 6, with repeats)
                         B1W0 5556
                         B0W2 4464
                 B0W0 6666
+```
