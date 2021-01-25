@@ -5,11 +5,13 @@ A question was posted online recently about the best strategy for winning the ga
 
 The parameters of the game are how many possible colors there are, how many pegs are in the code, and whether the same color is allowed to be repeated in the code, as in (4 of 6, repeats).
 
-Donald Knuth wrote a paper (http://www.cs.uni.edu/~wallingf/teaching/cs3530/resources/knuth-mastermind.pdf) on optimal play for the Breaker and showed that in four pegs in the code of six possible colors with repeats, it can be solved in no more than five tries. Donald Knuth is a deity of Computer Science, having written The Art of Computer Programming (https://en.wikipedia.org/wiki/The_Art_of_Computer_Programming). I wrote a program to implement Knuth's algorithm in C#. It also creates a table at the end of how to make perfect play.
+Donald Knuth wrote a paper (http://www.cs.uni.edu/~wallingf/teaching/cs3530/resources/knuth-mastermind.pdf) on optimal play for the Breaker and showed that in four pegs in the code of six possible colors with repeats, it can be solved in no more than five tries. Donald Knuth is a deity of Computer Science, having written The Art of Computer Programming (https://en.wikipedia.org/wiki/The_Art_of_Computer_Programming). I wrote a program to implement Knuth's algorithm in C#. It shows it playing all possible games and also creates a table at the end of how to make perfect play.
 
-In my program, I replace colors with numerals since the colors are arbitrary. You can try the results on this site (https://www.onlinespiele-sammlung.de/mastermind/mastermindgames/madglibs/index.html).
+In my program, I replace colors with numerals since the colors are arbitrary. You can try the results, playing on this site (https://www.onlinespiele-sammlung.de/mastermind/mastermindgames/madglibs/index.html).
 
-The program uses a MinMax algorithm (https://en.wikipedia.org/wiki/Minimax), which find the code that will reduce the number of possible remaining codes on each play. Because of the way it works, sometimes it will make a code that might not actually solve it on the next play, but instead guarantee that it solves it in the least number of tries. There are some other algorithms that will solve it in an average number of tries, but possibly having a larger maximum.
+The program uses a MinMax algorithm (https://en.wikipedia.org/wiki/Minimax), which finds the code that will reduce the number of possible remaining codes on each play. Because of the way it works, sometimes it will make a code that might not actually solve it on the next play, but instead guarantee that it solves it in the least number of tries. There are some other algorithms that will solve it in a smaller average number of tries, but possibly having a larger maximum.
+
+The algorithm shown here is not terribly efficient, playing rather loose with both execution speed and consumption of memory. It was meant as a fast demonstration rather than a necessarily optimal implementation.
 
 Here is the table produced by the program for playing (4 of 6, with repeats)
 
