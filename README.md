@@ -3,7 +3,7 @@ Solve Mastermind
 
 A question was posted online recently about the best strategy for winning the game of Mastermind (https://en.wikipedia.org/wiki/Mastermind_(board_game)). Mastermind is a game played between two players, a Code Maker and a Code Breaker. The Maker makes a code of colored pegs, and the Breaker has to guess the code. After each guess, the Maker gives feedback of how many of the pegs were the right color in the right place and how many are the right color in the wrong place, indicated by black and white pegs in the board. The Breaker then makes another guess.
 
-The parameters of the game are how many possible colors there are, how many pegs are in the code, and whether the same color is allowed to be repeated in the code, as in (4 of 6, repeats).
+The parameters of the game are how many pegs are in the code, how many possible colors there are, and whether the same color is allowed to be repeated in the code, as in (4 of 6, repeats).
 
 Donald Knuth wrote a paper (http://www.cs.uni.edu/~wallingf/teaching/cs3530/resources/knuth-mastermind.pdf) on optimal play for the Breaker and showed that in four pegs in the code of six possible colors with repeats, it can be solved in no more than five tries. Donald Knuth is a deity of Computer Science, having written The Art of Computer Programming (https://en.wikipedia.org/wiki/The_Art_of_Computer_Programming). I wrote a program to implement Knuth's algorithm in C#. It shows it playing all possible games and also creates a table at the end of how to make perfect play.
 
