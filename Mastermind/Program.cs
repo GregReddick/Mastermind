@@ -18,11 +18,11 @@ namespace Mastermind
 	/// <summary>A program.</summary>
 	public class Program
 	{
+		/// <summary>all.</summary>
+		private static readonly List<int> All = new();
+
 		/// <summary>The guess start.</summary>
 		private static int guessStart;
-
-		/// <summary>all.</summary>
-		private static List<int> all = new();
 
 		/// <summary>The root.</summary>
 		private static Node root;
@@ -38,9 +38,9 @@ namespace Mastermind
 
 			root = new Node(guessStart);
 
-			foreach (int solution in all)
+			foreach (int solution in All)
 			{
-				Solve(solution, new List<int>(all));
+				Solve(solution, new List<int>(All));
 			}
 
 			RecurseNode(root, (0, 0), 0);
@@ -57,7 +57,7 @@ namespace Mastermind
 			guessStart = repeats ? 1122 : 1234;
 			digitsInCode = digitsInCodeSet;
 			AddDigit(0, 0, digitsInCodeSet, digitsPossible, repeats);
-			all.Sort();
+			All.Sort();
 		}
 
 		/// <summary>Add digits to the existing code.</summary>
@@ -70,7 +70,7 @@ namespace Mastermind
 		{
 			if (position == digitsInCode)
 			{
-				all.Add(code);
+				All.Add(code);
 			}
 			else
 			{
@@ -109,8 +109,8 @@ namespace Mastermind
 			int black = 0;
 			int white = 0;
 
-			StringBuilder currentGuess = new StringBuilder(guess.ToString());
-			StringBuilder currentSolution = new StringBuilder(code.ToString());
+			StringBuilder currentGuess = new(guess.ToString());
+			StringBuilder currentSolution = new(code.ToString());
 			for (int digit = 0; digit < digitsInCode; digit++)
 			{
 				if (currentGuess[digit] == currentSolution[digit])
@@ -209,7 +209,7 @@ namespace Mastermind
 		private static void Solve(int code, List<int> s)
 		{
 			int row = 1;
-			List<int> unguessed = new List<int>(all);
+			List<int> unguessed = new(All);
 
 			// Step 2
 			int guess = guessStart;
@@ -217,7 +217,7 @@ namespace Mastermind
 			Node node = root;
 			while (true)
 			{
-				unguessed.Remove(guess);
+				_ = unguessed.Remove(guess);
 
 				// Step 3
 				(int blackGuess, int whiteGuess) = EvaluateRow(row, code, guess);
@@ -229,14 +229,14 @@ namespace Mastermind
 				}
 
 				// Step 5
-				List<int> sNew = new List<int>(s);
-				sNew.Remove(guess);
+				List<int> sNew = new(s);
+				_ = sNew.Remove(guess);
 				foreach (int item in s)
 				{
 					(int black, int white) = Evaluate(guess, item);
 					if (black != blackGuess || white != whiteGuess)
 					{
-						sNew.Remove(item);
+						_ = sNew.Remove(item);
 					}
 				}
 
@@ -298,8 +298,7 @@ namespace Mastermind
 			/// <returns>A Node.</returns>
 			public Node AddGuess((int Black, int White) result, int guess)
 			{
-				Node node = null;
-
+				Node node;
 				if (this.Nodes.ContainsKey(result))
 				{
 					node = this.Nodes[result];
