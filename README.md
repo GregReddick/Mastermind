@@ -13,7 +13,16 @@ The program uses a MinMax algorithm (https://en.wikipedia.org/wiki/Minimax), whi
 
 The algorithm shown here is not terribly efficient, playing rather loose with both execution speed and consumption of memory. It was meant as a fast demonstration rather than a necessarily optimal implementation.
 
-Here is the table produced by the program for playing (4 of 6, with repeats)
+Below is the table produced by the program for playing (4 of 6, with repeats). To use the table, let's assume Red=1, Blue=2, Yellow=3, Green=4, White=5, and Orange=6. Suppose the code is 2342 (or Blue, Yellow, Green, Blue). The first guess is always 1122 (Red, Red, Blue, Blue). This gives back 1 Black and 1 White, or B1W1. Scroll down so the first tab in reads B1W1, and it says after that to guess 1134 (Red, Red, Yellow, Green). This gives back 0 Black and 2 White, or B0W2. The next tab in says to guess 3521 (Yellow, White, Blue, Red). This gives back 0 Black and 2 White, or B0W2. Scroll down so the next tab in says to guess 4612 (Green, Orange, Red, Blue). This gives back 1 Black and 1 White. Scroll down so the next abs says to guess 2342 (Blue, Yellow, Green, Blue), which is the solution.
+
+If the code is 2342 (Blue, Yellow, Green, Blue), this would be the sequence of guesses.
+```
+1122 B1W1 
+1134 B0W2
+3521 B0W2
+4612 B1W1
+2342 B4W0
+```
 
 ```
 1122
